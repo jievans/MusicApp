@@ -1,0 +1,16 @@
+<form action="<%=albums_url%>" method="post">
+
+		<label for="band_id">Choose Band:</label>
+		<select name="band[id]" id="band_id">
+			<% @all_bands.each do |band| %>
+			<option value="<%= band.id %>" ><%= band.name %> </option>
+			<%end%>
+		</select>
+
+
+	<label for="album_name">Album</label>
+	<input name="album[name]" type = "text" id = "album_name">
+
+
+	<input type="submit" value="Add album">
+</form>

@@ -1,0 +1,3 @@
+<%= @track.name %>
+by <%= link_to @track.band.name, band_url(@track.band) %>
+on <%= link_to @track.album.name, album_url(@track.album) %>
