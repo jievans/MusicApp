@@ -13,4 +13,10 @@ class Track < ActiveRecord::Base
     :through => :album,
     :source => :band
     )
+
+  has_many( :notes,
+    :class_name => "Note",
+    :foreign_key => :track_id,
+    :primary_key => :id
+    )
 end

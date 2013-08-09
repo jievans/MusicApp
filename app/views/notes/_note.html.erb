@@ -1,0 +1,6 @@
+
+<form action="<%= note_url(note) %>" method="post">
+	<input type="hidden" name="_method" value="delete">
+<%= note.body %>
+<input type="submit" value="Delete note">
+</form>

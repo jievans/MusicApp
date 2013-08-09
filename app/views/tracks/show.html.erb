@@ -6,4 +6,20 @@ on <%= link_to @track.album.name, album_url(@track.album) %>
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete track">
 </form>
+<br />
+<br />
+
+<%= render @track.notes %>
+
+<form action="<%=notes_url%>" method="post">
+	<input type="hidden" name="note[track_id]" value="<%=@track.id%>">
+	<label for="note_body">
+	<textarea name="note[body]" id="note_body"> </textarea><br />
+	<input type="submit" value="Post note for track">
+</form>
+
+
+
+
+
 
