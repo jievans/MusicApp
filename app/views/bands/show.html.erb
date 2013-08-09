@@ -3,10 +3,20 @@
 <ul>
 	<% @band.albums.each do |album| %>
 	<li>
-		<%= link_to album.name, album_url(album)%>
+		<form action="<%=album_url(album)%>" method="post">
+			<%= link_to album.name, album_url(album)%>
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Delete album">
+		</form>
 		<ul>
 			<% album.tracks.each do |track| %>
-				<li><%= link_to track.name, track_url(track) %></li>
+				<li>
+					<form action="<%=track_url(track)%>" method="post">
+						<%= link_to track.name, track_url(track) %>
+						<input type="hidden" name="_method" value="delete">
+						<input type="submit" value="Delete track">
+					</form>
+				</li>
 			<% end %>
 		</ul>
 	</li>

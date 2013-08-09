@@ -1,3 +1,9 @@
 <%= @track.name %>
 by <%= link_to @track.band.name, band_url(@track.band) %>
 on <%= link_to @track.album.name, album_url(@track.album) %>
+<%= " (bonus track)" if @track.is_bonus %>
+<form action="<%=track_url(@track)%>" method="post">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete track">
+</form>
+

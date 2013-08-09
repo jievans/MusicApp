@@ -1,0 +1,26 @@
+<% action_url = action == :new ? albums_url : album_url(album) %>
+
+<form action="<%=action_url%>" method="post">
+		<% if action == :edit %>
+			<input type="hidden" name="_method" value="put">
+		<% end %>
+
+		<label for="band_id">Choose Band:</label>
+		<select name="band[id]" id="band_id">
+			<% all_bands.each do |band| %>
+			<option value="<%= band.id %>" <%= 'selected = "selected"'.html_safe if (album.persisted? && album.band.id == band.id) %> ><%= band.name %> </option>
+			<%end%>
+		</select>
+
+
+	<label for="album_name">Album</label>
+	<input name="album[name]" type="text" id="album_name" value = "<%=album.name%>">
+
+	<label for="album_is_live">Live</label>
+	<input type="radio" name="album[is_live]" value="true" id="album_is_live" <%="checked".html_safe if album.is_live%>>
+
+	<label for="album_is_live">Studio</label>
+	<input type="radio" name="album[is_live]" value="false" id="album_is_live" <%="checked".html_safe if !album.is_live%>>
+
+	<input type="submit" value="Complete album">
+</form>
