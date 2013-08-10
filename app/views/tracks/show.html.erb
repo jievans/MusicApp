@@ -2,6 +2,12 @@
 by <%= link_to @track.band.name, band_url(@track.band) %>
 on <%= link_to @track.album.name, album_url(@track.album) %>
 <%= " (bonus track)" if @track.is_bonus %>
+
+Lyrics:
+<div>
+	<%=ugly_lyrics(@track.lyrics)%>
+</div>
+
 <form action="<%=track_url(@track)%>" method="post">
 	<input type="hidden" name="authenticity_token"
 	value="<%= form_authenticity_token %>">
