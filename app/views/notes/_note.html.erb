@@ -1,6 +1,13 @@
 
+
 <form action="<%= note_url(note) %>" method="post">
+	<input type="hidden" name="authenticity_token"
+	value="<%= form_authenticity_token %>">
 	<input type="hidden" name="_method" value="delete">
-<%= note.body %>
-<input type="submit" value="Delete note">
+	<%= note.body %>
+	<% if @current_user.is_admin || @current_user.id == note.user_id %>
+	<input type="submit" value="Delete note">
+	<% end %>
 </form>
+
+

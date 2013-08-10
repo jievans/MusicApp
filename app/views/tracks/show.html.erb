@@ -3,6 +3,8 @@ by <%= link_to @track.band.name, band_url(@track.band) %>
 on <%= link_to @track.album.name, album_url(@track.album) %>
 <%= " (bonus track)" if @track.is_bonus %>
 <form action="<%=track_url(@track)%>" method="post">
+	<input type="hidden" name="authenticity_token"
+	value="<%= form_authenticity_token %>">
 	<input type="hidden" name="_method" value="delete">
 	<input type="submit" value="Delete track">
 </form>
@@ -12,7 +14,10 @@ on <%= link_to @track.album.name, album_url(@track.album) %>
 <%= render @track.notes %>
 
 <form action="<%=notes_url%>" method="post">
+	<input type="hidden" name="authenticity_token"
+	value="<%= form_authenticity_token %>">
 	<input type="hidden" name="note[track_id]" value="<%=@track.id%>">
+	<input type="hidden" name="note[user_id]" value="<%=@current_user.id%>">
 	<label for="note_body">
 	<textarea name="note[body]" id="note_body"> </textarea><br />
 	<input type="submit" value="Post note for track">
